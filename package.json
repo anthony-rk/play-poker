@@ -1,0 +1,24 @@
+{
+  "name": "play-poker",
+  "version": "1.0.0",
+  "description": "The goal of this project is to create a full stack web application where a user can play a game of Poker and keep track of ther score.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anthony-rk/play-poker.git"
+  },
+  "author": "Anthony Kowalski",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anthony-rk/play-poker/issues"
+  },
+  "homepage": "https://github.com/anthony-rk/play-poker#readme",
+  "devDependencies": {
+    "webpack": "^4.43.0",
+    "webpack-cli": "^3.3.11"
+  }
+}
