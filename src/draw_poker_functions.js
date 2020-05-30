@@ -16,10 +16,6 @@ class dealtCard {
         else 
             this.hold = false;
     }
-
-    sayHi() {
-        console.log("Suit is " + this.suit + " and the rank is " + this.rank);
-    }
 };
 
 const printGreeting = () => {
@@ -47,29 +43,31 @@ const printGreeting = () => {
 };
 
 // Deals the first hand of the game
-const getFirstHand = (cardRank, cardSuit) => {
-    let cardDup = 0;
+const getFirstHand = (playersHandArray) => {
+    for (let cardIndex = 0; cardIndex < 5; cardIndex++) {
+        let cardIsDuplicate = 0;
 
-    for (let i = 0; i < 5; i++)
-    {
-        cardDup = 0;
+        let randomSuit;
+        let randomRank;
+
+        let randomRankNum;
+
         do {
-            // Card rank is one of 13 (2-10, J, Q, K, A)
-            cardRank[i] = (Math.floor(Math.random() * 13) % 13);
-            // Card suit is one of 4
-            // Club, Diamond, Heart, or Spade
-            cardSuit[i] = (Math.floor(Math.random() * 4) % 4);
+            randomSuit = getSuit((Math.floor(Math.random() * 4) % 4));
 
-            // Loop that ensures each card is unique
-            for (let j = 0; j < i; j++)
-            {
-                if ((cardRank[i] == cardRank[j]) && (cardSuit[i] == cardSuit[j]))
-                {
-                    cardDup = 1;
-                }
+            randomRankNum = (Math.floor(Math.random() * 13) % 13);
+            randomRank = getRank(randomRankNum); 
+
+            for (let j = 0; j < cardIndex; j++) {
+                if (randomSuit == playersHandArray[j].suit && randomRank == playersHandArray[j].rank) // If another card has the same Suit and Rank, set cardIsDuplicate to 1
+                    cardIsDuplicate == 1;
             }
-        } while (cardDup == 1);
-    }
+        } while (cardIsDuplicate == 1);
+
+
+        let tempCard = new dealtCard(randomSuit, randomRank, cardIndex, randomRankNum);
+        playersHandArray.push(tempCard);
+    };
 };
 
 // Takes in the random number and returns the suit. // THIS IS GOOD 
@@ -121,14 +119,13 @@ const getRank = (rank) => {
 
 // Gets the User's current bet (range is 0 - 5, should make up the the total score value)
 const getBet = () => {
-    let bet;
 
     do // will keep running until the user enters 0-5
     {
-        bet = window.prompt("How much do you want to bet? (Enter a number 1 to 5, or 0 to quit the game): ");
+        let bet = window.prompt("How much do you want to bet? (Enter a number 1 to 5, or 0 to quit the game): ");
 
         if (bet >= 1 && bet <= 5) {
-            return(bet);
+            return (bet);
         }
         else if (bet == 0) {
             console.log("User has Quit...");
@@ -140,42 +137,78 @@ const getBet = () => {
     } while ( (bet < 0 || bet > 5));
 };
 
-const analyzeHand = (ranksinHand, suitsinHand) => {
-    let num_consec = 0;
-    let i = 0;
-    let rank = 0;
-    let suit = 0;
+
+const analyzeHand = (playersHandArray, firstSuit) => {
     let straight = false;
     let flush = false;
     let four = false;
     let three = false;
     let pairs = 0;
 
+    // Check for FLUSH // LOOKS GOOD
+    let isFlush = 0;
+    // let firsCardSuit = playersHandArray[0].suit;
 
-    for (suit = 0; suit < 4; suit++)
-        if (suitsinHand[suit] == 5)
-            flush = true;
-    rank = 0;
+    for (let i = 1; i < playersHandArray.length; i++) {
+        if (playersHandArray[i].suit == firstSuit)
+            isFlush++;
+        if (isFlush === 4) {
+            flush = true; 
+        }
+    };
 
-    while (ranksinHand[rank] == 0)
-        rank++;
+    // Check for STRAIGHT // LOOKS GOOD 
+    let sortedRankArray = [];
 
-    for (; rank < 13 && ranksinHand[rank]; rank++)
-        num_consec++;
+    for (let i = 0; i < playersHandArray.length; i++) {
+        sortedRankArray.push(playersHandArray[i].rankInt);
+    };
 
-    if (num_consec == 5) {
-        straight = true;
+    let isSorted = 0;
+    sortedRankArray.sort((a, b) => a - b);
+    console.log(sortedRankArray);
+
+    for (let i = 0; i < sortedRankArray.length - 1; i++) {
+        if (sortedRankArray[i] === ((sortedRankArray[i + 1]) - 1)) {
+            isSorted++;
+        }
+        if (isSorted === 4) {
+            straight = true;
+        }
+    };
+
+    // Check for 4 of a kind, 3 of a kind, or Pairs
+    let diamondsInHand = 0;
+    let clubsInHand = 0;
+    let heartsInHand = 0;
+    let spadesInHand = 0;
+
+    // Count how many of each Suit type are in the hand
+    for (let i = 0; i < playersHandArray.length; i++) {
+        if (playersHandArray[i].suit === 'Clubs') { clubsInHand++; }
+        else if (playersHandArray[i].suit === 'Diamonds') { diamondsInHand++; }
+        else if (playersHandArray[i].suit === 'Hearts') { heartsInHand++; }
+        else
+            spadesInHand++;
     }
 
-    for (rank = 0; rank < 13; rank++)
-    {
-        if (ranksinHand[rank] == 4)
-            four = true;
-        if (ranksinHand[rank] == 3)
-            three = true;
-        if (ranksinHand[rank] == 2)
+    let suitsArray = [];
+    suitsArray.push(clubsInHand);
+    suitsArray.push(diamondsInHand);
+    suitsArray.push(heartsInHand);
+    suitsArray.push(spadesInHand);
+
+    // Check if 4 of a kind or 3 of a kind
+    if (suitsArray.includes(4)) { four = true; };
+    if (suitsArray.includes(3)) { three = true; };
+
+    // Counts how many pairs there are
+    suitsArray.forEach(suit => {
+        if (suit == 2) {
             pairs++;
-    }
+        }
+    });
+
 
     if (straight && flush)
     {
@@ -187,7 +220,7 @@ const analyzeHand = (ranksinHand, suitsinHand) => {
         console.log("Four of a kind\n\n");
         return(10);
     }
-    else if (three&& pairs == 1)
+    else if (three && pairs == 1)
     {
         console.log("Full house\n\n");
         return(8);
@@ -222,73 +255,53 @@ const analyzeHand = (ranksinHand, suitsinHand) => {
         console.log("High Card\n\n");
         return(0);
     }
+
 };
 
-// This function looks through each of the five cards in the first hand and asks the user if they
-// want to keep the card. If they say no, they get a replacement card.
-const getFinalHand = (cardRank, cardSuit, finalRank, finalSuit, ranksinHand, suitsinHand) => {
+const updatePlayersHand = (playersHandArray) => { // LOOKS GOOD
+    let cardIsDuplicate = 0;
+    let randomSuit;
+    let randomRank;
+    let randomRankNum;
 
-    let suit;
-    let rank;
-
-    for (let i = 0; i < 5; i++)
-    {
-        suit = getSuit(cardSuit[i]);
-        rank = getRank(cardRank[i]);
-        window.alert("Do you want to keep card #" + (i + 1) + ": " + rank + suit + "?");
-        let ans = window.prompt("\nPlease answer (Y/N): ");
-
-        if (ans.toUpperCase() == 'Y')
-        {
-            finalRank[i] = cardRank[i];
-            finalSuit[i] = cardSuit[i];
-            ranksinHand[finalRank[i]]++;
-            suitsinHand[finalSuit[i]]++;
-            continue;
-        }
-        else if (ans.toUpperCase() == 'N')
-        {
-            let cardDup = 0;
+    for (let i = 0; i < 5; i++) {
+        if (playersHandArray[i].hold === false) {
             do {
-                cardDup = 0;
-                finalRank[i] = (Math.floor(Math.random() * 13) % 13);
-                finalSuit[i] = (Math.floor(Math.random() * 4) % 4);
+                cardIsDuplicate = 0;
 
-                // First check your new card against the
-                // 5 original cars to avoid duplication
-                for (let j = 0; j < 5; j++)
-                {
-                    if (finalRank[i] == cardRank[j] && (finalSuit[i] == cardSuit[j])) {
-                        cardDup = 1;
-                    }
+                // replace card
+                randomSuit = getSuit((Math.floor(Math.random() * 4) % 4));
+
+                randomRankNum = (Math.floor(Math.random() * 13) % 13);
+                randomRank = getRank(randomRankNum); 
+
+                for (let j = 0; j < 5; j++) {
+                    if (j === i)
+                        j++;
+                    // exclude the current card's index to not check against itself, starting an endless loop
+                    else if (randomSuit == playersHandArray[j].suit && randomRank == playersHandArray[j].rank) // If another card has the same Suit and Rank, set cardIsDuplicate to 1
+                        cardIsDuplicate == 1;
                 }
+            } while (cardIsDuplicate == 1);
 
-                // Next, check the new card against any newly drawn
-                // cards to avoid duplucation
-                for (let j = 0; j < i; j++)
-                {
-                    if (finalRank[i] == finalRank[j] && (finalSuit[i] == finalSuit[j])) {
-                        cardDup = 1;
-                    }
-                }
-            } while (cardDup == 1);
+            // Update the card once it is unique
+            playersHandArray[i].suit = randomSuit;
+            playersHandArray[i].rank = randomRank;
+            playersHandArray[i].rankInt = randomRankNum;
+            playersHandArray[i].hold = true;
 
-            ranksinHand[finalRank[i]]++;
-            suitsinHand[finalSuit[i]]++;
         }
     }
-
 };
-
 
 
 export {
     printGreeting,
+    updatePlayersHand,
     getFirstHand,
     getSuit,
     getRank,
     getBet,
     analyzeHand,
-    getFinalHand,
     dealtCard
 }
