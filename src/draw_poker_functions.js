@@ -1,8 +1,30 @@
 // Function Declarations
 
+// Create the Card Class
+class dealtCard {
+    constructor(suit, rank, index, rankInt) { 
+        this.suit = suit;
+        this.rank = rank;
+        this.rankInt = rankInt;
+        this.index = index;
+        this.hold = true;
+    }
+
+    updateHold() {
+        if (this.hold === false)
+            this.hold = true;
+        else 
+            this.hold = false;
+    }
+
+    sayHi() {
+        console.log("Suit is " + this.suit + " and the rank is " + this.rank);
+    }
+};
+
 const printGreeting = () => {
     console.log("***********************************************************\n");
-    console.log("\n\n\tWelcome to the Absolute Beginner's Casino\n\n");
+    console.log("\n\n\tWelcome to the Casino!\n\n");
     console.log("\t\tHome of Video Draw Poker\n\n\n");
     console.log("***********************************************************\n");
 
@@ -50,7 +72,7 @@ const getFirstHand = (cardRank, cardSuit) => {
     }
 };
 
-// Takes in the random number and returns the suit.
+// Takes in the random number and returns the suit. // THIS IS GOOD 
 const getSuit = (suit) => {
     switch(suit) {
         case 0:
@@ -64,7 +86,7 @@ const getSuit = (suit) => {
     }
 };
 
-// Takes in the random number and returns the card rank 
+// Takes in the random number and returns the card rank // THIS IS GOOD 
 const getRank = (rank) => {
     switch(rank)
     {
@@ -133,7 +155,7 @@ const analyzeHand = (ranksinHand, suitsinHand) => {
     for (suit = 0; suit < 4; suit++)
         if (suitsinHand[suit] == 5)
             flush = true;
-    // rank = 0;
+    rank = 0;
 
     while (ranksinHand[rank] == 0)
         rank++;
@@ -216,7 +238,7 @@ const getFinalHand = (cardRank, cardSuit, finalRank, finalSuit, ranksinHand, sui
         window.alert("Do you want to keep card #" + (i + 1) + ": " + rank + suit + "?");
         let ans = window.prompt("\nPlease answer (Y/N): ");
 
-        if (toupper(ans) == 'Y')
+        if (ans.toUpperCase() == 'Y')
         {
             finalRank[i] = cardRank[i];
             finalSuit[i] = cardSuit[i];
@@ -224,7 +246,7 @@ const getFinalHand = (cardRank, cardSuit, finalRank, finalSuit, ranksinHand, sui
             suitsinHand[finalSuit[i]]++;
             continue;
         }
-        else if (toupper(ans) == 'N')
+        else if (ans.toUpperCase() == 'N')
         {
             let cardDup = 0;
             do {
@@ -243,7 +265,7 @@ const getFinalHand = (cardRank, cardSuit, finalRank, finalSuit, ranksinHand, sui
 
                 // Next, check the new card against any newly drawn
                 // cards to avoid duplucation
-                for (j = 0; j < i; j++)
+                for (let j = 0; j < i; j++)
                 {
                     if (finalRank[i] == finalRank[j] && (finalSuit[i] == finalSuit[j])) {
                         cardDup = 1;
@@ -267,5 +289,6 @@ export {
     getRank,
     getBet,
     analyzeHand,
-    getFinalHand
+    getFinalHand,
+    dealtCard
 }
