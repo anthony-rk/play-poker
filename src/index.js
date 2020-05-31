@@ -1,3 +1,5 @@
+import './index.css';
+
 import { runDrawPoker } from "./draw_poker_runner";
 import { pageInitializer } from "./page_initializer";
 
