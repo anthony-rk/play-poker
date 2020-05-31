@@ -7,7 +7,7 @@ class dealtCard {
         this.rank = rank;
         this.rankInt = rankInt;
         this.index = index;
-        this.hold = true;
+        this.hold = false;
     }
 
     updateHold() {
@@ -118,11 +118,17 @@ const getRank = (rank) => {
 };
 
 // Gets the User's current bet (range is 0 - 5, should make up the the total score value)
-const getBet = () => {
+const getBet = (elementID) => {
 
     do // will keep running until the user enters 0-5
     {
-        let bet = window.prompt("How much do you want to bet? (Enter a number 1 to 5, or 0 to quit the game): ");
+        // let bet = window.prompt("How much do you want to bet? (Enter a number 1 to 5, or 0 to quit the game): ");
+        let bet = document.getElementById(elementID).value;
+        console.log(bet);
+
+        if (bet == 0) {
+            bet = 1;
+        }
 
         if (bet >= 1 && bet <= 5) {
             return (bet);
@@ -131,7 +137,7 @@ const getBet = () => {
             console.log("User has Quit...");
         }
         else {
-            window.prompt("Please enter a bet from 1-5 or 0 to quit the game.");
+            window.prompt("Please enter a bet from 1-5");
         }
 
     } while ( (bet < 0 || bet > 5));
@@ -147,7 +153,6 @@ const analyzeHand = (playersHandArray, firstSuit) => {
 
     // Check for FLUSH // LOOKS GOOD
     let isFlush = 0;
-    // let firsCardSuit = playersHandArray[0].suit;
 
     for (let i = 1; i < playersHandArray.length; i++) {
         if (playersHandArray[i].suit == firstSuit)
