@@ -1,14 +1,15 @@
 import './index.css';
 
-import { runDrawPoker } from "./draw_poker_runner";
+import { printGreeting } from "./draw_poker_functions";
 import { pageInitializer } from "./page_initializer";
 
 
 
 window.addEventListener('load', function () {
-    // setTimeout(() => {  runDrawPoker(); }, 2000);
     pageInitializer();
+    // printGreeting();
     
+    // This below is tied to the click on START GAME button
     // runDrawPoker();
 
 });

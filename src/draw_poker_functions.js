@@ -143,6 +143,12 @@ const getBet = (elementID) => {
     } while ( (bet < 0 || bet > 5));
 };
 
+const getBank = (elementID) => {
+    let bank = document.getElementById(elementID).innerHTML;
+    
+    return bank;
+};
+
 
 const analyzeHand = (playersHandArray, firstSuit) => {
     let straight = false;
@@ -307,6 +313,7 @@ export {
     getSuit,
     getRank,
     getBet,
+    getBank,
     analyzeHand,
     dealtCard
 }

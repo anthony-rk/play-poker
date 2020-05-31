@@ -11,7 +11,16 @@ let component = function(newElement, newInnerHTML, newID) {
 };
 
 let pageInitializer = function() {
-    // Project related HTML
+    // Display Bank here
+    const bankHolderDiv = component('div', '', 'bank-holder-div');
+    document.getElementById("content").appendChild(bankHolderDiv);
+
+    const bankDivAmount = component('div', 'Bank: ', 'bank-div-amount');
+    document.getElementById("bank-holder-div").appendChild(bankDivAmount);
+
+    const bankDiv = component('div', '100', 'bank-div');
+    document.getElementById("bank-holder-div").appendChild(bankDiv);
+
 
     // Add play game button
     const playGameButton = component('button', 'Start Game', 'play-game-button');
