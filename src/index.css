@@ -1,0 +1,140 @@
+#content {
+    text-align: center;
+}
+
+#bank-holder-div {
+    margin: 0 auto;
+    width: 40%;
+    background-color: red;
+}
+
+#bank-div-amount {
+    display: inline-block;
+    float: left;
+}
+
+
+#bankDiv {
+    float: left;
+    display: inline-block;
+}
+
+#play-game-button {
+    margin-bottom: 10px;
+}
+
+#bet-div {
+    display: inline-block;
+    padding-left: 10px;
+    padding-right: 5px;
+}
+
+#card-holder {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#card-0 {
+    float: left;
+    text-align: center;
+    background-color: red;
+    display: inline-block;
+    width: 20%;
+    height: 100px;
+    padding-top: 50px;
+}
+
+#card-1 {
+    float: left;
+    text-align: center;
+    background-color: red;
+    display: inline-block;
+    width: 20%;
+    height: 100px;
+    padding-top: 50px;
+}
+
+#card-2 {
+    float: left;
+    text-align: center;
+    background-color: red;
+    display: inline-block;
+    width: 20%;
+    height: 100px;
+    padding-top: 50px;
+}
+
+#card-3 {
+    float: left;
+    text-align: center;
+    background-color: red;
+    display: inline-block;
+    width: 20%;
+    height: 100px;
+    padding-top: 50px;
+}
+
+#card-4 {
+    float: left;
+    text-align: center;
+    background-color: red;
+    display: inline-block;
+    width: 20%;
+    height: 100px;
+    padding-top: 50px;
+}
+
+#update-hold-button-div {
+    text-align: center;
+    /* width: 100%; */
+}
+
+#card-hold-0 {
+    float: left;
+    text-align: center;
+    display: inline-block;
+    width: 20%;
+    height: 50px;
+    padding-top: 5px;
+    background-color: whitesmoke;
+}
+
+#card-hold-1 {
+    float: left;
+    text-align: center;
+    display: inline-block;
+    width: 20%;
+    height: 50px;
+    padding-top: 5px;
+    background-color: whitesmoke;
+}
+
+#card-hold-2 {
+    float: left;
+    text-align: center;
+    display: inline-block;
+    width: 20%;
+    height: 50px;
+    padding-top: 5px;
+    background-color: whitesmoke;
+}
+
+#card-hold-3 {
+    float: left;
+    text-align: center;
+    display: inline-block;
+    width: 20%;
+    height: 50px;
+    padding-top: 5px;
+    background-color: whitesmoke;
+}
+
+#card-hold-4 {
+    float: left;
+    text-align: center;
+    display: inline-block;
+    width: 20%;
+    height: 50px;
+    padding-top: 5px;
+    background-color: whitesmoke;
+}
