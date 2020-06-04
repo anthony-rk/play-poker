@@ -77,6 +77,39 @@ const runDrawPoker = () => {
     
             let firstCardSuitArg = playersHand[0].suit;
             let winnings = analyzeHand(playersHand, firstCardSuitArg);
+
+            let winningMessage = 'Test';
+
+
+            if (winnings == 20)
+                winningMessage = "Straight Flush";
+
+            else if (winnings == 10)
+                winningMessage = "Four of a Kind";
+    
+            else if (winnings == 8)
+                winningMessage = "Full House";
+
+            else if (winnings == 5)
+                winningMessage = "Flush";
+
+            else if (winnings == 4)
+                winningMessage = "Straight";
+                    
+            else if (winnings == 3)
+                winningMessage = "Three of a Kind";
+                
+            else if (winnings == 2)
+                winningMessage = "2 Pairs";
+            
+            else if (winnings == 1)
+                winningMessage = "1 Pair";
+
+            else
+                winningMessage = "High Card";
+
+            console.log(winningMessage + ' is the WINNING MESSAGE');
+            document.getElementById('winning-log-div').innerHTML = winningMessage;
         
             // Show this to the user
             console.log("You won " + (bet * winnings) + "!\n");
