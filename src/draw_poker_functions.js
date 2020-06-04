@@ -129,7 +129,6 @@ const getBet = (elementID) => {
     {
         // let bet = window.prompt("How much do you want to bet? (Enter a number 1 to 5, or 0 to quit the game): ");
         let bet = document.getElementById(elementID).value;
-        console.log(bet);
 
         if (bet == 0) {
             bet = 1;
@@ -142,7 +141,7 @@ const getBet = (elementID) => {
             console.log("User has Quit...");
         }
         else {
-            window.prompt("Please enter a bet from 1-5");
+            window.alert("Please enter a bet from 1-5");
         }
 
     } while ( (bet < 0 || bet > 5));
@@ -228,17 +227,17 @@ const analyzeHand = (playersHandArray, firstSuit) => {
 
     if (straight && flush)
     {
-        console.log("Straight flush\n\n");
+        console.log("Straight Flush\n\n");
         return(20);
     }
     else if (four)
     {
-        console.log("Four of a kind\n\n");
+        console.log("Four of a Kind\n\n");
         return(10);
     }
     else if (three && pairs == 1)
     {
-        console.log("Full house\n\n");
+        console.log("Full House\n\n");
         return(8);
     }
     else if (flush)
@@ -253,7 +252,7 @@ const analyzeHand = (playersHandArray, firstSuit) => {
     }
     else if (three)
     {
-        console.log("Three\n\n");
+        console.log("Three of a Kind\n\n");
         return(3);
     }
     else if (pairs == 2)
@@ -263,7 +262,7 @@ const analyzeHand = (playersHandArray, firstSuit) => {
     }
     else if (pairs == 1)
     {
-        console.log("Pair\n\n");
+        console.log("1 Pair\n\n");
         return(1);
     }
     else
@@ -292,13 +291,16 @@ const updatePlayersHand = (playersHandArray) => { // LOOKS GOOD
                 randomRank = getRank(randomRankNum); 
 
                 for (let j = 0; j < 5; j++) {
-                    if (j === i)
+                    if (j === i) {
                         j++;
+                    }
                     // exclude the current card's index to not check against itself, starting an endless loop
-                    else if (randomSuit == playersHandArray[j].suit && randomRank == playersHandArray[j].rank) // If another card has the same Suit and Rank, set cardIsDuplicate to 1
-                        cardIsDuplicate == 1;
+                    else if (randomSuit == playersHandArray[j].suit && randomRank == playersHandArray[j].rank) {
+                        cardIsDuplicate = 1; // If another card has the same Suit and Rank, set cardIsDuplicate to 1
+                    }
                 }
-            } while (cardIsDuplicate == 1);
+
+            } while (cardIsDuplicate === 1);
 
             // Update the card once it is unique
             playersHandArray[i].suit = randomSuit;
