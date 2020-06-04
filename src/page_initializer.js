@@ -31,9 +31,19 @@ let pageInitializer = function() {
     const dealNewHandGameButton = component('button', 'Deal Final Hand', 'deal-new-hand-button');
     document.getElementById("content").appendChild(dealNewHandGameButton);
 
+    const callbackFunction = (_callbackFn) => {
+        _callbackFn();
+    };
+
     playGameButton.addEventListener('click', function() {
-        console.log("New game button clicked!");
-        runDrawPoker();   
+        console.log("Start game button clicked!");
+        let button = document.getElementById('play-game-button');
+        button.disabled = true;
+        // Remove onclick until runDrawPoker() is completed, need to wait for it to complete to readd
+        callbackFunction(runDrawPoker);
+
+
+
     });
 
     // Get the Bet / display the current Bet here

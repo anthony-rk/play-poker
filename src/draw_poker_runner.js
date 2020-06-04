@@ -123,6 +123,9 @@ const runDrawPoker = () => {
             console.log("\nYour bank is now " + bank + ".\n");
 
             canDealFinalHand = false;
+
+            let button = document.getElementById('play-game-button');
+            button.disabled = false;
         }
         else
             console.log("Start a new game to get a final hand...");
