@@ -10,7 +10,12 @@ import { updateHoldButtons } from "./dom_manipulation_functions";
 import { resetViewToBlank } from "./dom_manipulation_functions";
 import { updateBankDiv } from "./dom_manipulation_functions";
 
+// Reset the vars so the last round does not affect current round
+// const resetGameVars = () => {
+//
+// };
 
+// Activates onClick of the Start Game Button
 const runDrawPoker = () => {
     let canDealFinalHand = true;
 
@@ -33,10 +38,33 @@ const runDrawPoker = () => {
     //         updateHoldButtons(playersHand, 'card-hold-' + i);
     //     });
     // };
+    
 
+    // Need to move this somewhere else....
+    // Or seperate the DOM and the update playersHand pieces. Move the DOM stuff to dom_manipulation_function.js
     for (let i = 0; i < 5; i++) {
-        document.getElementById('card-hold-' + i).addEventListener('click', function() {
-            updateHoldButtons(playersHand, 'card-hold-' + i);
+        let buttonID = 'card-hold-' + i;
+        document.getElementById(buttonID).addEventListener('click', function() {
+
+            // updateHoldButtons(playersHand, 'card-hold-' + i);
+            //     // Update the correct Card's this.hold = true or false if true
+
+            if (buttonID == 'card-hold-0') { 
+                playersHand[0].updateHold();
+            }
+            if (buttonID == 'card-hold-1') { 
+                playersHand[1].updateHold();
+            };
+            if (buttonID == 'card-hold-2') { 
+                playersHand[2].updateHold();
+            };
+            if (buttonID == 'card-hold-3') { 
+                playersHand[3].updateHold();
+            };
+            if (buttonID == 'card-hold-4') { 
+                playersHand[4].updateHold();
+            };
+
         });
     };
 

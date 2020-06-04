@@ -66,9 +66,9 @@ let pageInitializer = function() {
         let tempCardDiv = component("button", 'Hold', "card-hold-" + i);
         document.getElementById("update-hold-button-div").appendChild(tempCardDiv);
 
-        // tempCardDiv.addEventListener('click', function() {
-        //     updateHoldButtons('card-hold-' + i);
-        // });
+        tempCardDiv.addEventListener('click', function() {
+            updateHoldButtons('card-hold-' + i);
+        });
     };
 
     console.log("pageInitializer function ran..");

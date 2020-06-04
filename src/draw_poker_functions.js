@@ -312,7 +312,6 @@ const updatePlayersHand = (playersHandArray) => { // LOOKS GOOD
     }
 };
 
-
 export {
     printGreeting,
     updatePlayersHand,
@@ -322,5 +321,5 @@ export {
     getBet,
     getBank,
     analyzeHand,
-    dealtCard
+    dealtCard,
 }

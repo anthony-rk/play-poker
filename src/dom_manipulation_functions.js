@@ -25,28 +25,28 @@ const toggleHoldButtonsBackground = (elementID) => {
 };
 
 // Show the cards are held and update the data to hold on the backend
-const updateHoldButtons = (playersHandArray, buttonID) => {
-    // change background color to GREEN
+const updateHoldButtons = (buttonID) => {
+    // change background color to GREEN or WHITESMOKE
 
     // Update the correct Card's this.hold = true or false if true
     if (buttonID == 'card-hold-0') { 
-        playersHandArray[0].updateHold();
+        // playersHandArray[0].updateHold();
         toggleHoldButtonsBackground('card-hold-0');
     }
     if (buttonID == 'card-hold-1') { 
-        playersHandArray[1].updateHold();
+        // playersHandArray[1].updateHold();
         toggleHoldButtonsBackground('card-hold-1');
      };
     if (buttonID == 'card-hold-2') { 
-        playersHandArray[2].updateHold();
+        // playersHandArray[2].updateHold();
         toggleHoldButtonsBackground('card-hold-2');
      };
     if (buttonID == 'card-hold-3') { 
-        playersHandArray[3].updateHold();
+        // playersHandArray[3].updateHold();
         toggleHoldButtonsBackground('card-hold-3');
      };
     if (buttonID == 'card-hold-4') { 
-        playersHandArray[4].updateHold();
+        // playersHandArray[4].updateHold();
         toggleHoldButtonsBackground('card-hold-4');
     };
 };
