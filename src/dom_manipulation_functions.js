@@ -12,7 +12,6 @@ const updateCurrentView = (playersHandArray) => {
 const resetViewToBlank = (playersHandArray) => {
     // show the current card data on each of the IDs, i.e. card-0, card-1, etc
     for (let i = 0; i < playersHandArray.length; i++) {
-        // document.getElementById('card-' + i).innerHTML = "BLANK";
         document.getElementById('card-hold-' + i).style.backgroundColor = "whitesmoke";
     }
 };

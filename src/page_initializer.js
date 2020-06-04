@@ -33,7 +33,7 @@ let pageInitializer = function() {
 
     playGameButton.addEventListener('click', function() {
         console.log("New game button clicked!");
-        runDrawPoker();
+        runDrawPoker();   
     });
 
     // Get the Bet / display the current Bet here

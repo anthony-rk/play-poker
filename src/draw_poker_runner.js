@@ -10,13 +10,16 @@ import { updateHoldButtons } from "./dom_manipulation_functions";
 import { resetViewToBlank } from "./dom_manipulation_functions";
 import { updateBankDiv } from "./dom_manipulation_functions";
 
-// Reset the vars so the last round does not affect current round
-// const resetGameVars = () => {
-//
-// };
-
 // Activates onClick of the Start Game Button
 const runDrawPoker = () => {
+    // Reset the Hold buttons to WHITESMOKE
+    for (let i = 0; i < 5; i++) {
+        document.getElementById('card-hold-' + i).style.backgroundColor = 'whitesmoke';
+    }
+
+    // remove the onclick and then re add at the end so the user cannot hit Start Game over and over again? 
+    // document.getElementById("play-game-button").onclick = null;
+
     let canDealFinalHand = true;
 
     let bank = getBank('bank-div'); // grabs bank total
@@ -28,27 +31,10 @@ const runDrawPoker = () => {
     let playersHand = [];
     getFirstHand(playersHand);
 
-    //
-    // Issue with this here as it messes up the display on round 2 // 
-    //
-    // Add event listeners for the Hold buttons
-    // can I remove the event listener then add the below??
-    // for (let i = 0; i < 5; i++) {
-    //     document.getElementById('card-hold-' + i).removeEventListener('click', function() {
-    //         updateHoldButtons(playersHand, 'card-hold-' + i);
-    //     });
-    // };
-    
-
-    // Need to move this somewhere else....
-    // Or seperate the DOM and the update playersHand pieces. Move the DOM stuff to dom_manipulation_function.js
+    // Updates the Hold field to True or False depending on if the user clicks the Hold Button for the card
     for (let i = 0; i < 5; i++) {
         let buttonID = 'card-hold-' + i;
         document.getElementById(buttonID).addEventListener('click', function() {
-
-            // updateHoldButtons(playersHand, 'card-hold-' + i);
-            //     // Update the correct Card's this.hold = true or false if true
-
             if (buttonID == 'card-hold-0') { 
                 playersHand[0].updateHold();
             }
@@ -64,13 +50,11 @@ const runDrawPoker = () => {
             if (buttonID == 'card-hold-4') { 
                 playersHand[4].updateHold();
             };
-
         });
     };
 
-    // updateCurrentView(playersHand);
-
     console.log("Your five cards: \n");
+
     playersHand.forEach(card => {
         console.log("Card " + (card.index + 1) + ": " + card.rank + " of " + card.suit);
     });
@@ -79,7 +63,7 @@ const runDrawPoker = () => {
 
     // Waits for click on DEAL FINAL HAND button
     document.getElementById('deal-new-hand-button').addEventListener('click', function() {
-        if (canDealFinalHand = true) {
+        if (canDealFinalHand === true) {
             updatePlayersHand(playersHand);
             updateCurrentView(playersHand);
     
@@ -100,19 +84,7 @@ const runDrawPoker = () => {
             bank = bank - bet + (bet * winnings);
             updateBankDiv(bank);
             console.log("\nYour bank is now " + bank + ".\n");
-        
-            // Reset the view here
-            updateCurrentView(playersHand);
-            // resetViewToBlank(playersHand);
-    
-            for (let i = 0; i < 5; i++) {
-                document.getElementById('card-hold-' + i).style.backgroundColor = 'whitesmoke';
-            }
-            for (let i = 0; i < 5; i++) {
-                document.getElementById('card-hold-' + i).removeEventListener('click', function() {
-                    updateHoldButtons(playersHand, 'card-hold-' + i);
-                });
-            };
+
             canDealFinalHand = false;
         }
         else
