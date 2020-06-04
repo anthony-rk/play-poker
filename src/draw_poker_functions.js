@@ -53,17 +53,22 @@ const getFirstHand = (playersHandArray) => {
         let randomRankNum;
 
         do {
+            cardIsDuplicate = 0;
             randomSuit = getSuit((Math.floor(Math.random() * 4) % 4));
 
             randomRankNum = (Math.floor(Math.random() * 13) % 13);
             randomRank = getRank(randomRankNum); 
 
+            // Checks for Duplicates
             for (let j = 0; j < cardIndex; j++) {
-                if (randomSuit == playersHandArray[j].suit && randomRank == playersHandArray[j].rank) // If another card has the same Suit and Rank, set cardIsDuplicate to 1
-                    cardIsDuplicate == 1;
+                if (randomSuit === playersHandArray[j].suit && randomRank === playersHandArray[j].rank) {
+                    // If another card has the same Suit and Rank, set cardIsDuplicate to 1
+                    console.log('\nIS A DUPE, MATCHES WITH CARD AT INDEX '+ j);
+                    cardIsDuplicate = 1;
+                } 
             }
-        } while (cardIsDuplicate == 1);
 
+        } while (cardIsDuplicate === 1);
 
         let tempCard = new dealtCard(randomSuit, randomRank, cardIndex, randomRankNum);
         playersHandArray.push(tempCard);
