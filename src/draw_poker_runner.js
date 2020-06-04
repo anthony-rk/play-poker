@@ -17,6 +17,9 @@ const runDrawPoker = () => {
         document.getElementById('card-hold-' + i).style.backgroundColor = 'whitesmoke';
     }
 
+    // Reset the Winnings Div to black
+    document.getElementById('winning-log-div').innerHTML = ' ';
+
     // remove the onclick and then re add at the end so the user cannot hit Start Game over and over again? 
     // document.getElementById("play-game-button").onclick = null;
     // document.getElementById('play-game-button').removeAttribute("onclick");
@@ -78,7 +81,7 @@ const runDrawPoker = () => {
             let firstCardSuitArg = playersHand[0].suit;
             let winnings = analyzeHand(playersHand, firstCardSuitArg);
 
-            let winningMessage = 'Test';
+            let winningMessage = 'TEST';
 
 
             if (winnings == 20)
