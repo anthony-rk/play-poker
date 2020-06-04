@@ -6,13 +6,13 @@
     margin: 0 auto;
     width: 40%;
     background-color: red;
+    margin-bottom: 15px;
 }
 
 #bank-div-amount {
     display: inline-block;
     float: left;
 }
-
 
 #bankDiv {
     float: left;
@@ -137,4 +137,19 @@
     height: 50px;
     padding-top: 5px;
     background-color: whitesmoke;
+}
+
+#winning-log-holder-div {
+    margin: 0 auto;
+    width: 100%;
+}
+
+#winning-log-div {
+    text-align: center;
+    background-color: greenyellow;
+    display: inline-block;
+    width: 30%;
+    height: 40px;
+    margin-top: 15px;
+    padding-top: 15px;
 }

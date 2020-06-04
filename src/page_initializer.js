@@ -71,6 +71,13 @@ let pageInitializer = function() {
         });
     };
 
+    // Winning hand combo here
+    const winningLogDivHolder = component('div', '', 'winning-log-holder-div');
+    document.getElementById("content").appendChild(winningLogDivHolder);
+    
+    const winningLogDiv = component('div', 'Winnings Are Here...', 'winning-log-div');
+    document.getElementById('winning-log-holder-div').appendChild(winningLogDiv);
+
     console.log("pageInitializer function ran..");
 };
 

@@ -19,6 +19,7 @@ const runDrawPoker = () => {
 
     // remove the onclick and then re add at the end so the user cannot hit Start Game over and over again? 
     // document.getElementById("play-game-button").onclick = null;
+    // document.getElementById('play-game-button').removeAttribute("onclick");
 
     let canDealFinalHand = true;
 
