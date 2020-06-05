@@ -6,8 +6,6 @@ import { updatePlayersHand } from "./draw_poker_functions";
 import { getBank } from "./draw_poker_functions";
 
 import { updateCurrentView } from "./dom_manipulation_functions";
-import { updateHoldButtons } from "./dom_manipulation_functions";
-import { resetViewToBlank } from "./dom_manipulation_functions";
 import { updateBankDiv } from "./dom_manipulation_functions";
 
 // Activates onClick of the Start Game Button
@@ -20,9 +18,6 @@ const runDrawPoker = () => {
     // Reset the Winnings Div to black
     document.getElementById('winning-log-div').innerHTML = ' ';
 
-    // remove the onclick and then re add at the end so the user cannot hit Start Game over and over again? 
-    // document.getElementById("play-game-button").onclick = null;
-    // document.getElementById('play-game-button').removeAttribute("onclick");
 
     let canDealFinalHand = true;
 

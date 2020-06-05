@@ -4,7 +4,27 @@
 const updateCurrentView = (playersHandArray) => {
     // show the current card data on each of the IDs, i.e. card-0, card-1, etc
     for (let i = 0; i < playersHandArray.length; i++) {
-        document.getElementById('card-' + i).innerHTML = "" + playersHandArray[i].rank + "\n\n" + playersHandArray[i].suit;
+        let myElement = document.getElementById('card-' + i);
+        // document.getElementById('card-' + i).innerHTML = "" + playersHandArray[i].rank + "\n\n" + playersHandArray[i].suit;
+        myElement.innerHTML = "" + playersHandArray[i].rank + "\n\n" + playersHandArray[i].suit;
+
+        // change background based on the suit
+        if (playersHandArray[i].suit === 'Diamonds') {
+            myElement.style.backgroundColor = 'black'; 
+            myElement.style.color = 'white';     
+        }
+        else if (playersHandArray[i].suit === 'Spades') {
+            myElement.style.backgroundColor = 'blue';    
+            myElement.style.color = 'white';    
+        }
+        else if (playersHandArray[i].suit === 'Hearts') {
+            myElement.style.backgroundColor = 'red';   
+            myElement.style.color = 'white';   
+        }
+        else { // Case for Clubs
+            myElement.style.backgroundColor = 'green';  
+            myElement.style.color = 'white';    
+        }
     }
 };
 
@@ -17,10 +37,10 @@ const resetViewToBlank = (playersHandArray) => {
 };
 
 const toggleHoldButtonsBackground = (elementID) => {
-    if (document.getElementById(elementID).style.backgroundColor === "green") {
+    if (document.getElementById(elementID).style.backgroundColor === "cornflowerblue") {
         document.getElementById(elementID).style.backgroundColor = "whitesmoke";
     } else 
-        document.getElementById(elementID).style.backgroundColor = "green";
+        document.getElementById(elementID).style.backgroundColor = "cornflowerblue";
 };
 
 // Show the cards are held and update the data to hold on the backend

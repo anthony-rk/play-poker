@@ -41,9 +41,6 @@ let pageInitializer = function() {
         button.disabled = true;
         // Remove onclick until runDrawPoker() is completed, need to wait for it to complete to readd
         callbackFunction(runDrawPoker);
-
-
-
     });
 
     // Get the Bet / display the current Bet here
@@ -63,7 +60,7 @@ let pageInitializer = function() {
 
     // Make the div for each of the 5 cards
     for (let i = 0; i < 5; i++) {
-        let tempCardDiv = component("div", 'TEST', "card-" + i);
+        let tempCardDiv = component("div", '', "card-" + i);
         document.getElementById("card-holder").appendChild(tempCardDiv);
     };
 
