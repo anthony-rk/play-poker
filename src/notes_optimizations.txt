@@ -1,0 +1,78 @@
+--- High Priorty / Bugs ---
+
+    Issue: Sometimes we get 2 of the same card
+        // Had == instead of = for the dupe check in getFirstHand() as well as updatePlayersHand()
+        // Need to reset the playersHand Array to []?
+        // Done...
+        
+
+    Issue: Need to disable Deal Final Hand onclick unless Start Game is clicked
+        // Done...
+
+    Issue: Need to stop Start Game from activating until Deal Final Hand is clicked
+        // Possible to remove event listener and then readd at the end of runDrawPoker() ?  
+        // Can I put the remove onclick and then run runDrawPoker() then add onclick to the onclick fn 
+            // on the dom_manipulations_functions / page_initializer file?
+
+        // Utilized button.diasble in the onclick fn and then set it back to false in the runDrawPoker() fn
+        // Done...
+
+    Issue: Remove printGreeting() fn from the onclick for the Start Game button so it does not show each time
+        // Done...
+
+    Issue: Hold buttons do not go green on 2nd round and thereafter on click
+        // If you click Start Game again it stays Green..
+        //
+        // add onclick that changes the class to green or whitesmoke
+        // can I remove the event listener then add the below??
+        //
+        // Split the DOM and the Updating of the Hold attribute components, is working now.
+        // Done...
+
+    Issue: Prompt for playing again pops up the number of times that rounds are played, need to fix
+        // get rid of the keep playing prompt, need to change the do..while... loop in the runner fn
+        // Done...
+
+    Issue: Remove Bank variable from the run draw poker fn
+        // think this is good
+        // Done...
+
+    Issue: getBet not updating the bet correctly
+        // think this is good
+        // Done...
+
+
+--- Lower Priority Cosmetic / Useful Changes --- 
+
+    Issue: Make the card background a different color depending on the Suite
+        // Can change color in the future to more visually pleasing
+        // Done...
+
+    Issue: Add Spacing in between the cards
+        // Having trouble with borders and widths.. 
+        // check into Flexbox or something similar? 
+
+    Issue: Make the card background a different color / add an outline if winning cards i.e Green
+        //
+
+    Issue: Make the winning Div Flash around the borders on a winning
+        //
+
+    Issue: Show to user what they Won, so winning amount and the winning hand aka "Four of a Kind"
+        // Add a div below the card game that shows the message that is currently logging to the console
+        // Add a div below to show the Amount Won
+
+    Issue: Add mouseover hover to the Hold buttons
+        // 
+
+    Issue: Add Documentation
+    // Don’t underestimate the importance of high quality documentation on your projects. 
+        // As a professional developer writing good documentation is a must. As a job seeker 
+        // it’s a hidden opportunity to shine. Your projects should include a useful README and 
+        // at least one screenshot. Include a section about why you built the project 
+        // and another section with instructions to run the project locally.
+
+        // Remember to write some documentation for both technical and non-technical audience.
+        // A potential employer should be able to follow your documentation, regardless of their technical background.
+
+    // The Odin Project has a good Idea here https://www.theodinproject.com/courses/getting-hired/lessons/building-your-personal-website?ref=lnav
