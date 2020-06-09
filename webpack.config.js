@@ -8,8 +8,11 @@ module.exports = {
     contentBase: './dist',
   },
   output: {
-    filename: 'main.js',
-    path: path.resolve(__dirname, 'dist'),
+    path: __dirname,
+    publicPath: '/',
+    filename: 'bundle.js',
+	//	filename: 'main.js',
+    //	path: path.resolve(__dirname, 'dist'),
   },
   module: {
     rules: [
