@@ -41,6 +41,9 @@
         // think this is good
         // Done...
 
+	Issue: Should get 3 of a kind but instead got 1 pair
+		//
+
 
 --- Lower Priority Cosmetic / Useful Changes --- 
 
