@@ -172,15 +172,16 @@ body {
     border-width: 2px;
     padding-top: 15px;
 }
-/* 
-#winning-log-div-winner {
+
+#winning-amount-div {
     text-align: center;
     background-color: greenyellow;
     display: inline-block;
     width: 30%;
-    height: 40px;
-    margin-top: 15px;
+    height: 20px;
+    margin-top: 5px;
     border-style: solid;
     border-width: 2px;
-    padding-top: 15px;
-} */
+    padding-top: 5px;
+}
+

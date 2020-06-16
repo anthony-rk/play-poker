@@ -44,6 +44,9 @@
 	Issue: Should get 3 of a kind but instead got 1 pair
 		//
 
+    Issue: Add a div to show user what they Won
+        // 
+
 
 --- Lower Priority Cosmetic / Useful Changes --- 
 

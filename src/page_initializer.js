@@ -82,8 +82,16 @@ let pageInitializer = function() {
     const winningLogDivHolder = component('div', '', 'winning-log-holder-div');
     document.getElementById("content").appendChild(winningLogDivHolder);
     
-    const winningLogDiv = component('div', 'Winnings Are Here...', 'winning-log-div');
+    const winningLogDiv = component('div', '', 'winning-log-div');
     document.getElementById('winning-log-holder-div').appendChild(winningLogDiv);
+
+    // Winning amount goes ehre
+    const winningAmountDivHolder = component('div', '', 'winning-amount-holder-div');
+    document.getElementById("content").appendChild(winningAmountDivHolder);
+    
+    const winningAmountDiv = component('div', '', 'winning-amount-div');
+    document.getElementById('winning-amount-holder-div').appendChild(winningAmountDiv);
+
 
     console.log("pageInitializer function ran..");
 };

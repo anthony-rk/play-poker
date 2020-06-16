@@ -15,8 +15,9 @@ const runDrawPoker = () => {
         document.getElementById('card-hold-' + i).style.backgroundColor = 'whitesmoke';
     }
 
-    // Reset the Winnings Div to black
+    // Reset the Winnings Div to blank
     document.getElementById('winning-log-div').innerHTML = ' ';
+    document.getElementById('winning-amount-div').innerHTML = ' ';
 
 
     let canDealFinalHand = true;
@@ -108,6 +109,7 @@ const runDrawPoker = () => {
 
             console.log(winningMessage + ' is the WINNING MESSAGE');
             document.getElementById('winning-log-div').innerHTML = winningMessage;
+            document.getElementById('winning-amount-div').innerHTML = "You won " + winnings + "!";
         
             // Show this to the user
             console.log("You won " + (bet * winnings) + "!\n");
